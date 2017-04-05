@@ -13,11 +13,21 @@ namespace DungeonsOfDoom
 
         }
 
-        public override void Attack(Creature creature)
+        public override int Attack(Creature creature)
         {
-            creature.Health -= this.Strength;
+            if (this.Strength*2 > creature.Strength)
+            {
+                creature.Health -= this.Strength;
+                return this.Strength;
+            }
+            else
+            { 
+                this.Health = 0;
+                return 0;
+            }
+
         }
 
     }
-   
+
 }

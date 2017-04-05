@@ -23,6 +23,6 @@ namespace DungeonsOfDoom
             Strength = strength;
         }
 
-        public abstract void Attack(Creature creature);
+        public abstract int Attack(Creature creature);
     }
 }

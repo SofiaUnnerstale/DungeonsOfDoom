@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
@@ -131,7 +132,25 @@ namespace DungeonsOfDoom
                     string choice = Console.ReadLine();
                     switch (choice.ToUpper())
                     {
-                        case "Y": player.Attack(monsterInRoom); monsterInRoom.Attack(player);  isNotValid = false; break;
+                        case "Y": int result = player.Attack(monsterInRoom);
+                                Console.WriteLine($"{monsterInRoom.Name} was hurt by {result}!");
+                                Thread.Sleep(1000);
+
+                                if (monsterInRoom.Health > 0)
+                                {
+                                    result = monsterInRoom.Attack(player);
+                                    Console.WriteLine($"{player.Name} was hurt by {result}!");
+                                    Thread.Sleep(1000);
+                                }
+                                else
+                                {
+                                    world[player.X, player.Y].Monster = null;
+                                    Console.WriteLine($"Congrats you have slayed the {monsterInRoom.Name}!");
+                                    Thread.Sleep(2000);
+
+                                }
+
+                                isNotValid = false; break;
 
                         case "N": isNotValid = false; break;
 

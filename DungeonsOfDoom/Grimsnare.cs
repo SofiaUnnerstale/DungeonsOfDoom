@@ -13,9 +13,10 @@ namespace DungeonsOfDoom
 
         }
 
-        public override void Attack(Creature creature)
+        public override int Attack(Creature creature)
         {
             creature.Health -= this.Strength;
+            return this.Strength;
         }
     }
 }
