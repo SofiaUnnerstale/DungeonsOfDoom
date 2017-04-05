@@ -19,6 +19,10 @@ namespace DungeonsOfDoom
         {
             Health = health;
         }
-
+        //TODO
+        public override void PickUpItem(Player player)
+        {
+            player.Health += this.Health;
+        }
     }
 }

@@ -19,5 +19,11 @@ namespace DungeonsOfDoom
         {
             Strength = strength;
         }
+        //TODO
+        public override void PickUpItem(Player player)
+        {
+            player.Backpack.Add(this);
+            
+        }
     }
 }

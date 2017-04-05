@@ -15,9 +15,11 @@ namespace DungeonsOfDoom
 
         public void Play()
         {
+            TextUtils.AnimateText("Welcome to the Dungeons of doom...", 70);
+            Thread.Sleep(1000);
             CreatePlayer();
             CreateWorld();
-
+            
             do
             {
                 Console.Clear();
@@ -166,9 +168,11 @@ namespace DungeonsOfDoom
                 } while (isNotValid);
 
             }
+
+            //TODO ITEM CHANGED
             else if (world[player.X, player.Y].Item != null)
             {
-                player.Backpack.Add(world[player.X, player.Y].Item);
+                world[player.X, player.Y].Item.PickUpItem(player);
                 world[player.X, player.Y].Item = null;
             }
         }

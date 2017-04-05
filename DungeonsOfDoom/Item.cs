@@ -19,5 +19,9 @@ namespace DungeonsOfDoom
         {
             Weight = weight;
         }
+
+        //TODO Genomgång 14.19 5/4
+
+        public abstract void PickUpItem(Player player);
     }
 }
