@@ -10,14 +10,18 @@ namespace DungeonsOfDoom
     {
         public string CatchPhrase { get; set; }
 
+        public static int MonsterCount {get; set;}
+
         public Monster(string name, int health, string catchPhrase, int strength) : base(name, health, strength)
         {
             CatchPhrase = catchPhrase;
+            MonsterCount++;
         }
 
         public Monster(string name, int health, string catchPhrase, int strength, char icon) : base(name, health, strength, icon)
         {
             CatchPhrase = catchPhrase;
+            MonsterCount++;
         }
     }
 }

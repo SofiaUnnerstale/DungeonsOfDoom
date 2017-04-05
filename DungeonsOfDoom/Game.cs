@@ -11,11 +11,12 @@ namespace DungeonsOfDoom
     {
         Player player;
         Room[,] world;
-        Random random = new Random();
+     
 
         public void Play()
         {
             TextUtils.AnimateText("Welcome to the Dungeons of doom...", 70);
+            Console.WriteLine();
             Thread.Sleep(1000);
             CreatePlayer();
             CreateWorld();
@@ -27,7 +28,7 @@ namespace DungeonsOfDoom
                 DisplayStats();
                 AskForMovement();
 
-            } while (player.Health > 0);
+            } while (player.Health > 0 || Monster.MonsterCount > 0);
 
             GameOver();
         }
@@ -123,9 +124,37 @@ namespace DungeonsOfDoom
             Monster monsterInRoom = world[player.X, player.Y].Monster;
             if (monsterInRoom != null)
             {
-                Console.WriteLine($"You have encounter a {monsterInRoom.Name}. The monster says: \"{ monsterInRoom.CatchPhrase}\"");
-                do
-                {
+                isNotValid = EncounterMonster(isNotValid, monsterInRoom);
+
+            }
+
+
+            else if (world[player.X, player.Y].Item != null)
+            {
+                EncounterItem();
+
+            }
+        }
+
+        private void EncounterItem()
+        {
+            world[player.X, player.Y].Item.PickUpItem(player);
+            Console.WriteLine($"You have picked up {world[player.X, player.Y].Item.Name}");
+            world[player.X, player.Y].Item = null;
+            Thread.Sleep(500);
+
+           
+
+
+        }
+
+        
+
+        private bool EncounterMonster(bool isNotValid, Monster monsterInRoom)
+        {
+            Console.WriteLine($"You have encounter a {monsterInRoom.Name}. The monster says: \"{ monsterInRoom.CatchPhrase}\"");
+            do
+            {
 
                 Console.WriteLine("Do you want to engage Y/N");
 
@@ -134,25 +163,36 @@ namespace DungeonsOfDoom
                     string choice = Console.ReadLine();
                     switch (choice.ToUpper())
                     {
-                        case "Y": int result = player.Attack(monsterInRoom);
-                                Console.WriteLine($"{monsterInRoom.Name} was hurt by {result}!");
-                                Thread.Sleep(1000);
+                        case "Y":
+                            int result = player.Attack(monsterInRoom);
+                            Console.WriteLine($"{monsterInRoom.Name} was hurt by {result}!");
+                            Thread.Sleep(1000);
 
-                                if (monsterInRoom.Health > 0)
+                            if (monsterInRoom.Health > 0)
+                            {
+                                result = monsterInRoom.Attack(player);
+
+                                if (result>0)
                                 {
-                                    result = monsterInRoom.Attack(player);
-                                    Console.WriteLine($"{player.Name} was hurt by {result}!");
-                                    Thread.Sleep(1000);
+                                Console.WriteLine($"{player.Name} was hurt by {result}!");
+                                Thread.Sleep(700);
+
                                 }
                                 else
                                 {
-                                    world[player.X, player.Y].Monster = null;
-                                    Console.WriteLine($"Congrats you have slayed the {monsterInRoom.Name}!");
-                                    Thread.Sleep(2000);
+                                    GameOver();
 
                                 }
+                            }
+                            else
+                            {
+                                world[player.X, player.Y].Monster = null;
+                                Console.WriteLine($"Congrats you have slayed the {monsterInRoom.Name}!");
+                                Thread.Sleep(700);
 
-                                isNotValid = false; break;
+                            }
+
+                            isNotValid = false; break;
 
                         case "N": isNotValid = false; break;
 
@@ -164,22 +204,14 @@ namespace DungeonsOfDoom
 
                     Console.WriteLine(ex.Message);
                 }
-               
-                } while (isNotValid);
 
-            }
-
-            //TODO ITEM CHANGED
-            else if (world[player.X, player.Y].Item != null)
-            {
-                world[player.X, player.Y].Item.PickUpItem(player);
-                world[player.X, player.Y].Item = null;
-            }
+            } while (isNotValid);
+            return isNotValid;
         }
 
         private void Water()
         {
-            if (random.Next(10) == 1)
+            if (RandomUtils.RandomGenerator(10))
             {
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
                 Console.Write('~');
@@ -389,9 +421,28 @@ namespace DungeonsOfDoom
         private void GameOver()
         {
             Console.Clear();
-            Console.WriteLine("Game over...");
-            Console.ReadKey();
-            Play();
+            if (Monster.MonsterCount<=0)
+            {
+                Console.WriteLine("Congrats! You have sent all the monsters back to the underworld where they belong!");
+                Console.ReadKey();
+             
+            }
+            else
+            {
+                Console.WriteLine("Game over...");
+                Console.ReadKey();
+            }
+
+            Console.Write("Do you want to play again? Y/N ");
+            string temp = Console.ReadLine();
+            switch (temp)
+            {
+                case "Y": Play(); break;
+
+                default:
+                    break;
+            }
+            
 
         }
 
@@ -407,22 +458,22 @@ namespace DungeonsOfDoom
 
                     if (player.X != x || player.Y != y)
                     {
-                        int randomNumberMonster = random.Next(0, 100);
+                        
 
-                        if (randomNumberMonster < 5)
+                        if (RandomUtils.RandomGenerator(2))
                         { world[x, y].Monster = new Grimsnare(); }
-                        else if (randomNumberMonster < 10)
+                        else if (RandomUtils.RandomGenerator(2))
                         { world[x, y].Monster = new PrimitivePhantomBeast(); }
 
-                        int randomNumberItem = random.Next(0, 100);
+                       
 
-                        if (randomNumberMonster < 15)
+                        if (RandomUtils.RandomGenerator(1))
                         { world[x, y].Item = new Food("Apple", 1, 1); }
-                        else if (randomNumberMonster < 20)
+                        else if (RandomUtils.RandomGenerator(1))
                         { world[x, y].Item = new Food("HealthPotion", 2, 2); }
-                        else if (randomNumberMonster < 25)
+                        else if (RandomUtils.RandomGenerator(1))
                         { world[x, y].Item = new Weapon("Axe", 3, 4); }
-                        else if (randomNumberMonster < 25)
+                        else if (RandomUtils.RandomGenerator(1))
                         { world[x, y].Item = new Weapon("Sword", 2, 2); }
 
                     }

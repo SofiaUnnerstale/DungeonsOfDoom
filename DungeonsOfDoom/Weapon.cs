@@ -19,11 +19,19 @@ namespace DungeonsOfDoom
         {
             Strength = strength;
         }
-        //TODO
+        
         public override void PickUpItem(Player player)
         {
             player.Backpack.Add(this);
-            
+            UseItem(player);
         }
+
+        private void UseItem(Player player)
+        {
+            //TODO Använda vapen måste läggas till i Game.cs
+            player.Strength += this.Strength;
+        }
+
+
     }
 }

@@ -10,18 +10,20 @@ namespace DungeonsOfDoom
     {
         public int Weight { get; set; }
 
-        public Item(string name, int weight) : base(name)
+        public Item(string name, int weight) : base(name, '?')
         {
             Weight = weight;
         }
 
-        public Item(string name, int weight, char icon) : base(name, icon)
+        public Item(string name, int weight, char icon) : base(name,icon)
         {
             Weight = weight;
         }
 
-        //TODO Genomgång 14.19 5/4
+       
 
         public abstract void PickUpItem(Player player);
+
+       
     }
 }
