@@ -33,7 +33,11 @@ namespace DungeonsOfDoom
         {
             Console.WriteLine();
             Console.WriteLine(player.Name);
-            Console.WriteLine($"Health: {player.Health}");
+            Console.Write($"Health: {player.Health} ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("♥");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
 
             int i = 0;
             Console.WriteLine("Backpack: item (weight)");
@@ -41,8 +45,9 @@ namespace DungeonsOfDoom
             foreach (var item in player.Backpack)
             {
                 i++;
-                Console.WriteLine($"{i}: {item.Name} ({item.Weight})");
+                Console.Write($"{i}: {item.Name} ({item.Weight}) ");
             }
+            Console.WriteLine();
 
         }
 
