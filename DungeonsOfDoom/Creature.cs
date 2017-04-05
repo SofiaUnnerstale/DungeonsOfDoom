@@ -22,5 +22,7 @@ namespace DungeonsOfDoom
             Health = health;
             Strength = strength;
         }
+
+        public abstract void Attack(Creature creature);
     }
 }

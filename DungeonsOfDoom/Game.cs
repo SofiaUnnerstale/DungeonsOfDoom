@@ -31,6 +31,35 @@ namespace DungeonsOfDoom
 
         private void DisplayStats()
         {
+            DisplayPlayer();
+            Monster monsterInRoom = world[player.X, player.Y].Monster;
+            if (monsterInRoom != null)
+            {
+                DisplayMonster(monsterInRoom);
+            }
+            
+        }
+
+        private void DisplayMonster(Monster monsterInRoom)
+        {
+            Console.WriteLine();
+            Console.WriteLine(monsterInRoom.Name);
+            Console.Write($"Health: {monsterInRoom.Health} ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("♥");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.Write($"Strength: {monsterInRoom.Strength} ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("♦");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+
+
+        }
+
+        private void DisplayPlayer()
+        {
             Console.WriteLine();
             Console.WriteLine(player.Name);
             Console.Write($"Health: {player.Health} ");
@@ -38,6 +67,12 @@ namespace DungeonsOfDoom
             Console.Write("♥");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
+            Console.Write($"Strength: {player.Strength} ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("♦");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+
 
             int i = 0;
             Console.WriteLine("Backpack: item (weight)");
@@ -48,7 +83,6 @@ namespace DungeonsOfDoom
                 Console.Write($"{i}: {item.Name} ({item.Weight}) ");
             }
             Console.WriteLine();
-
         }
 
         private void AskForMovement()
@@ -75,8 +109,6 @@ namespace DungeonsOfDoom
                 player.X = newX;
                 player.Y = newY;
 
-                player.Health--;
-
                 CheckForEncounter();
             }
 
@@ -84,10 +116,36 @@ namespace DungeonsOfDoom
 
         private void CheckForEncounter()
         {
-            if (world[player.X, player.Y].Monster != null)
+            bool isNotValid = true;
+            Monster monsterInRoom = world[player.X, player.Y].Monster;
+            if (monsterInRoom != null)
             {
-                Console.WriteLine($"You have encounter a {world[player.X, player.Y].Monster.Name}. The monster says: \"{ world[player.X, player.Y].Monster.CatchPhrase}\"");
-                Console.ReadKey();
+                Console.WriteLine($"You have encounter a {monsterInRoom.Name}. The monster says: \"{ monsterInRoom.CatchPhrase}\"");
+                do
+                {
+
+                Console.WriteLine("Do you want to engage Y/N");
+
+                try
+                {
+                    string choice = Console.ReadLine();
+                    switch (choice.ToUpper())
+                    {
+                        case "Y": player.Attack(monsterInRoom); monsterInRoom.Attack(player);  isNotValid = false; break;
+
+                        case "N": isNotValid = false; break;
+
+                        default: break;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+               
+                } while (isNotValid);
+
             }
             else if (world[player.X, player.Y].Item != null)
             {
@@ -243,7 +301,7 @@ namespace DungeonsOfDoom
 
         private void LeftBorder(int index)
         {
-            int t = 1234 + index*127;
+            int t = 1234 + index * 127;
             if (index == 0)
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -329,9 +387,9 @@ namespace DungeonsOfDoom
                         int randomNumberMonster = random.Next(0, 100);
 
                         if (randomNumberMonster < 5)
-                        { world[x, y].Monster = new Monster("Grimsnare", 30, "Bu!", 5, '*'); }
+                        { world[x, y].Monster = new Grimsnare(); }
                         else if (randomNumberMonster < 10)
-                        { world[x, y].Monster = new Monster("Primitive Phantom Beast", 15, "Prepare to die!", 3, '*'); }
+                        { world[x, y].Monster = new PrimitivePhantomBeast(); }
 
                         int randomNumberItem = random.Next(0, 100);
 
@@ -355,7 +413,7 @@ namespace DungeonsOfDoom
             Console.Write("Skriv in namnet på din hjälte: ");
             string playerName = Console.ReadLine();
 
-            player = new Player(playerName, 30, 0, 0, 0);
+            player = new Player(playerName, 30, 5, 0, 0);
         }
 
 

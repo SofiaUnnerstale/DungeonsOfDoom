@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class Monster : Creature
+    abstract class Monster : Creature
     {
         public string CatchPhrase { get; set; }
 
