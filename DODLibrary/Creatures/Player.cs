@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DungeonsOfDoom.Creatures
 {
-    class Player : Creature
+   public class Player : Creature
     {
         public int X { get; set; }
         public int Y { get; set; }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DungeonsOfDoom.Creatures
 {
-    class PrimitivePhantomBeast : Monster
+   public class PrimitivePhantomBeast : Monster
     {
         public PrimitivePhantomBeast() : base("Primitive Phantom Beast", 1, "Prepare to die!", 3, '*')
         {

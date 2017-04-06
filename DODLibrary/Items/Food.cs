@@ -1,12 +1,15 @@
-﻿using System;
+﻿using DungeonsOfDoom.Creatures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+
+
+namespace DungeonsOfDoom.Items
 {
-    class Food : Item
+   public class Food : Item
     {
         public int Health { get; set; }
 

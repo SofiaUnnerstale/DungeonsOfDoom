@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DungeonsOfDoom.Creatures
 {
-    abstract class Monster : Creature
+    public abstract class Monster : Creature
     {
         public string CatchPhrase { get; set; }
 
-        public static int MonsterCount {get; set;}
+        public static int MonsterCount {get; set;} //TODO --
 
         public Monster(string name, int health, string catchPhrase, int strength) : base(name, health, strength)
         {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DungeonsOfDoom.Creatures
 {
-    abstract class Creature : GameObject, ICanBeCarried
+   public  abstract class Creature : GameObject, ICanBeCarried
     {
         public int Health { get; set; }
         public int Strength { get; set; }

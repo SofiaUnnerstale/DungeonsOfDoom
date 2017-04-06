@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonsOfDoom", "DungeonsO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{1D2E9516-B889-4281-952F-62EBBF3D6B6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DODLibrary", "DODLibrary\DODLibrary.csproj", "{C96D2D01-AAB1-425C-B9ED-0C92AF55AFBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1D2E9516-B889-4281-952F-62EBBF3D6B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D2E9516-B889-4281-952F-62EBBF3D6B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D2E9516-B889-4281-952F-62EBBF3D6B6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C96D2D01-AAB1-425C-B9ED-0C92AF55AFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C96D2D01-AAB1-425C-B9ED-0C92AF55AFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C96D2D01-AAB1-425C-B9ED-0C92AF55AFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C96D2D01-AAB1-425C-B9ED-0C92AF55AFBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

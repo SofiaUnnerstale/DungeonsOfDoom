@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    interface ICanBeCarried
+   public interface ICanBeCarried
     {
         int Weight { get; }
         string Name { get; }

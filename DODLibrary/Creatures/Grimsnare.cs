@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfDoom
+namespace DungeonsOfDoom.Creatures
 {
-    class Grimsnare : Monster
+    public class Grimsnare : Monster
     {
         public Grimsnare() : base("Grimsnare", 1, "Bu!", 5, '*')
         {

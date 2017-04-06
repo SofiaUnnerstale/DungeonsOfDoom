@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    abstract class GameObject
+    public abstract class GameObject
     {
-        public string Name { get; set; }
-        public char Icon { get; set; }
+       public string Name { get; set; }
+       public char Icon { get; set; }
 
 
         public GameObject(string name)

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DungeonsOfDoom.Creatures;
 
-namespace DungeonsOfDoom
+namespace DungeonsOfDoom.Items
 {
-    class Weapon : Item, ICanBeCarried
+    public class Weapon : Item, ICanBeCarried
     {
         public int Strength { get; set; }
 
@@ -28,7 +29,7 @@ namespace DungeonsOfDoom
 
         private void UseItem(Player player)
         {
-            //TODO Använda vapen måste läggas till i Game.cs
+            //TODO Ändra så att man kan välja vapen
             player.Strength += this.Strength;
         }
 

@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Utils;
+using DungeonsOfDoom;
+using DungeonsOfDoom.Items;
+using DungeonsOfDoom.Creatures;
 
-namespace DungeonsOfDoom
+namespace ConsoleGame
 {
     class Game
     {

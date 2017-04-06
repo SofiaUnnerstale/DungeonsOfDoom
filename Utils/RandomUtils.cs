@@ -8,19 +8,12 @@ namespace Utils
 {
    public static class RandomUtils
     {
-       static Random random = new Random();
+       private static Random random = new Random();
 
         static public bool RandomLike(int seed, int percentage)
         {
             int randomNumber = Math.Abs(seed.ToString().GetHashCode()) % 100;
             return randomNumber < percentage;
-        }
-
-        static public int RandomGenerator ()
-        {
-            int randomNumber = random.Next(0, 101);
-
-            return randomNumber;
         }
 
         static public bool RandomGenerator(int upperLimit)
