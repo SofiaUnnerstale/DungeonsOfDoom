@@ -39,6 +39,7 @@ namespace DungeonsOfDoom
         {
             string story = System.IO.File.ReadAllText(@"C: \Users\Administrator\Source\Repos\DungeonsOfDoom\DungeonsOfDoom\DungeonsOfDoom.txt");
             TextUtils.AnimateText(story, 50);
+            Thread.Sleep(100);
         }
 
         private void DisplayStats()
@@ -494,7 +495,7 @@ namespace DungeonsOfDoom
 
         private void CreatePlayer()
         {
-            Console.Write("Skriv in namnet på din hjälte: ");
+            Console.Write("Write the name of your hero: ");
             string playerName = Console.ReadLine();
 
             player = new Player(playerName, 30, 5, 0, 0);
