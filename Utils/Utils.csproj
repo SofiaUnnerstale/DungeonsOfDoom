@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{509AF4F7-7618-41AB-AEB6-0E68744CA8DF}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{1D2E9516-B889-4281-952F-62EBBF3D6B6E}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DungeonsOfDoom</RootNamespace>
-    <AssemblyName>DungeonsOfDoom</AssemblyName>
+    <RootNamespace>Utils</RootNamespace>
+    <AssemblyName>Utils</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,33 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Creature.cs" />
-    <Compile Include="Food.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="GameObject.cs" />
-    <Compile Include="Grimsnare.cs" />
-    <Compile Include="ICanBeCarried.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="Monster.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="PrimitivePhantomBeast.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="Weapon.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DungeonsOfDoom.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{1d2e9516-b889-4281-952f-62ebbf3d6b6e}</Project>
-      <Name>Utils</Name>
-    </ProjectReference>
+    <Compile Include="RandomUtils.cs" />
+    <Compile Include="TextUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

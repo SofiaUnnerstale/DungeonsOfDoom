@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Utils;
 
 namespace DungeonsOfDoom
 {
@@ -19,6 +20,7 @@ namespace DungeonsOfDoom
             Console.WriteLine();
             Thread.Sleep(1000);
             CreatePlayer();
+            GetStory();
             CreateWorld();
             
             do
@@ -31,6 +33,12 @@ namespace DungeonsOfDoom
             } while (player.Health > 0 || Monster.MonsterCount > 0);
 
             GameOver();
+        }
+
+        private void GetStory()
+        {
+            string story = System.IO.File.ReadAllText(@"C: \Users\Administrator\Source\Repos\DungeonsOfDoom\DungeonsOfDoom\DungeonsOfDoom.txt");
+            TextUtils.AnimateText(story, 50);
         }
 
         private void DisplayStats()
