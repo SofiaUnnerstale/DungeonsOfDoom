@@ -234,10 +234,9 @@ namespace DungeonsOfDoom
             }
         }
 
-        private void Tree(int position = 0)
+        private void Tree(int position)
         {
-            Random random = new Random(position);
-            if (random.Next(5) == 0)
+            if (RandomUtils.RandomLike(position, 20))
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("♣");
@@ -249,7 +248,6 @@ namespace DungeonsOfDoom
                 Console.Write("▲");
             }
         }
-
         private void TopBorder()
         {
             int t = 1337;

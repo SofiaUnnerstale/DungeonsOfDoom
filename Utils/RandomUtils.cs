@@ -10,6 +10,12 @@ namespace Utils
     {
        static Random random = new Random();
 
+        static public bool RandomLike(int seed, int percentage)
+        {
+            int randomNumber = Math.Abs(seed.ToString().GetHashCode()) % 100;
+            return randomNumber < percentage;
+        }
+
         static public int RandomGenerator ()
         {
             int randomNumber = random.Next(0, 101);
