@@ -8,7 +8,7 @@ namespace DungeonsOfDoom
 {
     class PrimitivePhantomBeast : Monster
     {
-        public PrimitivePhantomBeast() : base("Primitive Phantom Beast", 15, "Prepare to die!", 3, '*')
+        public PrimitivePhantomBeast() : base("Primitive Phantom Beast", 1, "Prepare to die!", 3, '*')
         {
 
         }

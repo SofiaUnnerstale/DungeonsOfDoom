@@ -10,9 +10,9 @@ namespace DungeonsOfDoom
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public List<Item> Backpack { get; private set; }
+        public List<ICanBeCarried> Backpack { get; private set; }
 
-        public Player(string name, int health, int strength, int x, int y, List<Item> backPack = null) : base(name, health, strength)
+        public Player(string name, int health, int strength, int x, int y, List<ICanBeCarried> backPack = null) : base(name, health, strength)
         {
             X = x;
             Y = y;
@@ -23,11 +23,11 @@ namespace DungeonsOfDoom
             }
             else
             {
-                Backpack = new List<Item>();
+                Backpack = new List<ICanBeCarried>();
             }
         }
 
-        public Player(string name, int health, int strength, int x, int y, char icon, List<Item> backPack = null) : base(name, health, strength, icon)
+        public Player(string name, int health, int strength, int x, int y, char icon, List<ICanBeCarried> backPack = null) : base(name, health, strength, icon)
         {
             X = x;
             Y = y;
@@ -38,7 +38,7 @@ namespace DungeonsOfDoom
             }
             else
             {
-                Backpack = new List<Item>();
+                Backpack = new List<ICanBeCarried>();
             }
             
         }

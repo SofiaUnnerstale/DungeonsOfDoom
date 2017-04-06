@@ -8,7 +8,7 @@ namespace DungeonsOfDoom
 {
     class Grimsnare : Monster
     {
-        public Grimsnare() : base("Grimsnare", 30, "Bu!", 5, '*')
+        public Grimsnare() : base("Grimsnare", 1, "Bu!", 5, '*')
         {
 
         }

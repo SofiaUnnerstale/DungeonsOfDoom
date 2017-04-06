@@ -186,9 +186,11 @@ namespace DungeonsOfDoom
                             }
                             else
                             {
+                                player.Backpack.Add(world[player.X, player.Y].Monster);
                                 world[player.X, player.Y].Monster = null;
                                 Console.WriteLine($"Congrats you have slayed the {monsterInRoom.Name}!");
                                 Thread.Sleep(700);
+
 
                             }
 

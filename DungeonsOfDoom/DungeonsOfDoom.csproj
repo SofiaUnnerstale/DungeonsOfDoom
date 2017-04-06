@@ -48,6 +48,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Grimsnare.cs" />
+    <Compile Include="ICanBeCarried.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="Player.cs" />

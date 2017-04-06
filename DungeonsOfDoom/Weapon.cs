@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfDoom
 {
-    class Weapon : Item
+    class Weapon : Item, ICanBeCarried
     {
         public int Strength { get; set; }
 
